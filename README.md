@@ -3,7 +3,6 @@
 </p>
 
 <h1>Creating and Using an Active Directory (AD) with Azure Virtual Machines (VM's) </h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 <h2>Operational Necessities</h2>
 
