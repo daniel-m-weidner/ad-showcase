@@ -64,7 +64,7 @@ Now go to the VM menu once more, it is time to boot into the Active Directory Do
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/TfzyKXQ.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/TfzyKXQ.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 Now using the Public IP address from your client (Windows 10) VM, login to the machine and go through the windows usual prompts when starting a fresh Windows VM. It is time to ping our private webserver's private IP address. To do this, type "Powershell" in the Windows Search menu. You will see the command line open for you. The command is simply: ping xx(IP), [in my case ping 10.0.0.4]. You will see the ping response listed for you then. More information can be retrieved by entering [ipconfig /all]. You will see the DNS servers address being listed as the same address as well. This clearly indicates that the VM is able to connect to the webserver. Now we are ready to start configuring our Active Directory. To get started, close the current remote connection and connect to the AD Virtual Machine. The Server Manager will open again, and within, select "Add Roles and Features". A wizard will open, select "next" three times until you are in the "Server Roles" selection and tick "Active Directory Domain Services" and "next" again until you are able to select "Install", it will take a few moments. Close it and now you will notice an exclamation mark next to the flag icon in the top-right within Server Manager. There, you will now be able to "Activate" the Domain Controller. Click "Promote..."
@@ -80,7 +80,31 @@ Now using the Public IP address from your client (Windows 10) VM, login to the m
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/TfzyKXQ.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/gVfcmLI.png" height="60%" width="60%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Another Wizard will open up. Choose "Add New Forest". Choose a domain name (e.g. with .com) and a password. Make note of your domain name. Now keep clicking next within the wizard when possible and click "Install" when prompted. It will take a little while and a reboot will happen automatically. Simply reconnect to the VM after a minute and you're back in. 
+<p>
+<img src="https://i.imgur.com/DMZhsti.png" height="500%" width="50%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/XsrQaTh.png" height="500%" width="50%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Another Wizard will open up. Choose "Add New Forest". Choose a domain name (e.g. with .com) and a password. Make note of your domain name. Now keep clicking next within the wizard when possible and click "Install" when prompted. It will take a little while and a reboot will happen automatically. Simply reconnect to the VM after a minute and you're back in. Click on the Start Menu and expand "Windows Administrative Tools". Within, open [...Users and Computers]. Within, right-click your domain and select New -> Organizational Unit. Add "_EMPLOYEES", as well as "_ADMINS" in separate instances. Now, within the "_Admins" forlder, create New -> User. Type in the Name, as well as the login username and set a password. For ease of operation, uncheck the password check requirement. Finish and  you have the new user set up. Right-Click the user and "Add to a Group". In the window, enter "domain admins" and OK. Now signout using the start menu. This time log in with our new Admin account. Make sure when opening the Remote Desktop program, you select the change of account and input your admin username. If successful, you will be greeted with the Name of the profile. Seeing that it is working, now log into the Client-Side VM. Navigate to Settings -> System -> About -> Rename this PC (advanced).  Within, click "Change". Simply input your domain name in the domain line and OK. It will prompt you to restart, let it restart and it is done. Sign out of the account.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/ZfvqDv5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/ZfvqDv5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/ZfvqDv5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Log in as the domain admin and open [...Users and Computers] again. 
