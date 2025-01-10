@@ -35,7 +35,7 @@
 <img src="https://i.imgur.com/advLZEt.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-First, go to virtual machines within the Azure platform. Select "Create Azure Virutal Machine". Create a new resource group, if needed. The first VM will be the Active Directory with our Domain Controller. Thus, I will also name it accordingly for simplicity. Next, make sure you select the correct disk image, one of the Windows Server 2022 distributions. Make sure to use a size that will serve the purposes of this use case. Create your login credentials and make sure you make note of them. When finished, go ahead and select "Review and Create", and when finished loading, click "Create". Now the deployment has already begun. You can now go to Virtual Machines again and create the second Machine. Select the same resource group that was created, give it a fitting name, e.g. your name (this will be the client using the AD) select the Windows 10 image and set your login information again. Create the VM and while waiting for full deployment, we can configure the AD's NIC IP address to be static. Click on the Server VM within the Virtual Machines menu. Navigate to Networking -> Network settings. Click on the network Interface, which will open the IP settings. By selecting the ip config, you can now set the IP to be "Static" and "Save".
+First, go to virtual machines within the Azure platform. Select "Create Azure Virutal Machine". Create a new resource group, if needed. The first VM will be the Active Directory with our Domain Controller. Thus, I will also name it accordingly for simplicity. Next, make sure you select the correct disk image, one of the Windows Server 2022 distributions. Make sure to use a size that will serve the purposes of this use case. Create your login credentials and make sure you make note of them. Afterwards, continue to the Networking Section and Create a new Virtual Network and select it. This is important as both VM's have to be connected to the same Vnet. When finished, go ahead and select "Review and Create", and when finished loading, click "Create". Now the deployment has already begun. You can now go to Virtual Machines again and create the second Machine. Select the same resource group that was created, give it a fitting name, e.g. your name (this will be the client using the AD) select the Windows 10 image and set your login information again. Proceed to the Networking page and Select the same VNet as the first VM's, your own creation. "Create" the VM and while waiting for full deployment, we can configure the AD's NIC IP address to be static. Click on the Server VM within the Virtual Machines menu. Navigate to Networking -> Network settings. Click on the network Interface, which will open the IP settings. By selecting the ip config, you can now set the IP to be "Static" and "Save".
 </p>
 <br />
 
@@ -96,15 +96,34 @@ Another Wizard will open up. Choose "Add New Forest". Choose a domain name (e.g.
 <br />
 
 <p>
-<img src="https://i.imgur.com/VBVu2lJ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/ZfvqDv5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/GSUnIW5.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/ZfvqDv5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/GfVYG6o.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Seeing that it is working, now log into the Client-Side VM. Navigate to Settings -> System -> About -> Rename this PC (advanced).  Within, click "Change". Simply input your domain name in the domain line and OK. It will prompt you to restart, let it restart and it is done, now sign out of the account. Log in as the domain admin and open [...Users and Computers] again. There, you will now see the Client PC listed in the Computers folder. Now we can login as the domain user, make sure to enter your domain, then \ and then your domain admin name when logging in to the Virtual Machine. Navigate to the About section of the Settings once more and Select Remote Desktop on the right-hand side. Click on the User Accounts setting on the bottom. Select "Add", enter "domain users" into the text field and OK. Now we will be able to log in our own users on the webserver through remote desktop. Sign-out of the client VM. Let's create some users. To do this, switch back to the Active Directory VM. 
+<p>
+<img src="https://i.imgur.com/h6vytQs.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Seeing that it is working, now log into the Client-Side VM. Navigate to Settings -> System -> About -> Rename this PC (advanced).  Within, click "Change". Simply input your domain name in the domain line and OK. It will prompt you to restart, let it restart and it is done, now sign out of the account. Log in as the domain admin and open [...Users and Computers] again. There, you will now see the Client PC listed in the Computers folder. Now we can login as the domain user, make sure to enter your domain, then \ and then your domain admin name when logging in to the Virtual Machine. Navigate to the About section of the Settings once more and Select Remote Desktop on the right-hand side. Click on the User Accounts setting on the bottom. Select "Add", enter "domain users" into the text field and OK. Now we will be able to log in our own users on the webserver through remote desktop. Sign-out of the client VM. Let's create some users. To do this, switch back to the Active Directory VM. OPen Users and Computeres once more and within the Employees folder, right-click the empty area and Create New -> User and you will have a window where you can enter the name, username and on the next page set the password. Choose "Next" and "Finish". Repeat for as many users as you would like to add; I will add four in this example. Now try logging in with one of them, using their username. Once this login was successful, we are now ready to get into Group Policy and other Management tools made possible within AD.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
