@@ -9,20 +9,22 @@
 - Microsoft Azure (personal Virtual Machine platform of choice) (local VM optional)
 - Remote Desktop
 - Active Directory Domain Services 
-- PowerShell
 
 <h2>Operating Systems Used </h2>
 
 - Windows Server 2022
 - Windows 10
 
-<h2>Steps involved in establishing and using your Active Directory</h2>
+<h2>Steps involved in stablishing an Active Directory and it's use cases</h2>
 
 - Create two VMs, one running Windows Server 2022, another with Windows 10 (Azure)
-- Configure NIC, DNS settings to link the AD with our client PC, testing
-- 
-<h2>Detailed Steps involved</h2>
+- Configure NIC, DNS settings to link the two VM's, testing
+- Installing the Active Directory within Windows Server and creating our domain
+- creating user and admin accounts, account lockouts, passwords and more
 
+<h2>Detailed Steps involved</h2>
+</p>
+<br />
 <p>
 <img src="https://i.imgur.com/y7SWUDn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
