@@ -111,19 +111,38 @@ Another Wizard will open up. Choose "Add New Forest". Choose a domain name (e.g.
 <img src="https://i.imgur.com/h6vytQs.png" height="40%" width="40%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Seeing that it is working, now log into the Client-Side VM. Navigate to Settings -> System -> About -> Rename this PC (advanced).  Within, click "Change". Simply input your domain name in the domain line and OK. It will prompt you to restart, let it restart and it is done, now sign out of the account. Log in as the domain admin and open [...Users and Computers] again. There, you will now see the Client PC listed in the Computers folder. Now we can login as the domain user, make sure to enter your domain, then \ and then your domain admin name when logging in to the Virtual Machine. Navigate to the About section of the Settings once more and Select Remote Desktop on the right-hand side. Click on the User Accounts setting on the bottom. Select "Add", enter "domain users" into the text field and OK. Now we will be able to log in our own users on the webserver through remote desktop. Sign-out of the client VM. Let's create some users. To do this, switch back to the Active Directory VM. OPen Users and Computeres once more and within the Employees folder, right-click the empty area and Create New -> User and you will have a window where you can enter the name, username and on the next page set the password. Choose "Next" and "Finish". Repeat for as many users as you would like to add; I will add four in this example. Now try logging in with one of them, using their username. Once this login was successful, we are now ready to get into Group Policy and other Management tools made possible within AD.
+Seeing that it is working, now log into the Client-Side VM. Navigate to Settings -> System -> About -> Rename this PC (advanced).  Within, click "Change". Simply input your domain name in the domain line and OK. It will prompt you to restart, let it restart and it is done, now sign out of the account. Log in as the domain admin and open [...Users and Computers] again. There, you will now see the Client PC listed in the Computers folder. Now we can login as the domain user, make sure to enter your domain, then \ and then your domain admin name when logging in to the Virtual Machine. Navigate to the About section of the Settings once more and Select Remote Desktop on the right-hand side. Click on the User Accounts setting on the bottom. Select "Add", enter "domain users" into the text field and OK. Now we will be able to log in our own users on the webserver through remote desktop. Sign-out of the client VM. Let's create some users. To do this, switch back to the Active Directory VM. Open Users and Computeres once more and within the Employees folder, right-click the empty area and Create New -> User and you will have a window where you can enter the name, username and on the next page set the password. Choose "Next" and "Finish". Repeat for as many users as you would like to add; I will add four in this example. Now try logging in with one of them, using their username. Once this login was successful, we are now ready to get into Group Policy and other Account Management tools made possible within AD.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/LW3DG9f.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/zs01TX4.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 <p>
-<img src="https://i.imgur.com/VBVu2lJ.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/sOEBdBi.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
+Log into your Active Directory VM and type "gpmc.msc" into the Windows search field. This will open the Group Policy Management Program. There, you will notice your domain being displayed. Expand your forest domain until you see "Default Domain Policy". Right-click it and select "Edit...". Wihtin, Expand Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Account Policies. In here, we can adjust the account lockout threshold. It is set to zero by default here, which means there is no limit on login attempts. Double-click the Policy and you have the ability to chhose the amount of unsuccessful login attempts that the system allows. I will set mine to five. Click OK and you will see further changes concerning the  login experience. You are able to adjust these settings with the Policy options within this manager. Check out the settings and choose to your preference. I will disable admin account lockouts this time.  Now usiingone of the user accounts you have created, try logging in, while using the wrong password, until the lockout takes effect. You will then reveive an error message from remote desktop informing you of the lockout. Now let's access the Domain Controller through the AD VM. Make sure  you are logging in as the admin. Go to [...Users and Computers] and Double-click the account affected within the Employees folder. Click the "Accounts" tab and you will be able to unlock it be checking the corresponding box. Now try loggin in to the Client PC with that account again and it will be accessible once more.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/KWtTHsH.png" height="30%" width="30%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/UBVh9tM.png" height="50%" width="50%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+<p>
+<img src="https://i.imgur.com/3nSUClb.png" height="70%" width="70%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+</p>
+<br />
+Within the Users and Computers program, you will have many different Admin tools to manage user accounts. Go back to the Active Dircetory VM for this and open the program. A quick way of accessing some of them is by right-clicking a given user and selecting an option. There, you will be able to swiftly lock or unlock user accounts, as well as change the passsword. In the field of IT helpdesk, it is very common to assist people within the company with account lockouts and password changes. Click that option now and there are two options: giving a one-time password and requiring the creation of a new password by the user, or creating a completely new password. Make your selection and after choosing OK, your change will take effect. You may try logging in that account to see the result. If you feel intrigued, make sure to experiment more using the platform, you have full control over this Active Directory now and there are many things that can be adjusted. If you are finished and would not like to use the resource again, make sure you delete all those resources within Azure. That is all for my showcase and I appreciate your interest.
